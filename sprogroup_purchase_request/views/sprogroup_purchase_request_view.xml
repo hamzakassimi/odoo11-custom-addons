@@ -2,7 +2,6 @@
 <!-- Copyright 2016 Eficent Business and IT Consulting Services S.L.
      License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl-3.0) -->
 <odoo>
-
         <record model="ir.ui.view" id="view_sprogroup_purchase_request_form">
             <field name="name">sprogroup.purchase.request.form</field>
             <field name="model">sprogroup.purchase.request</field>
@@ -17,12 +16,12 @@
                     <button name="button_to_approve" states="draft"
                             string="Request approval" type="object"
                             class="oe_highlight"/>
-                    <button name="button_leader_approved"
+  <!--                  <button name="button_leader_approved"
                             string="Leader Approve"
                             type="object"
                             class="oe_highlight"
                             groups="base.group_user"
-                            attrs="{'invisible': [('can_leader_approved', '=', False)]}"/>
+                            attrs="{'invisible': [('can_leader_approved', '=', False)]}"/>-->
                     <button name="button_manager_approved"
                             states="leader_approved"
                             string="Manager Approve"
@@ -48,7 +47,7 @@
                     />
 
                     <field name="state" widget="statusbar"
-                           statusbar_visible="draft,to_approve,leader_approved,manager_approved,done,rejected"
+                           statusbar_visible="draft,to_approve,leader_approved,approved,done,rejected"
                            statusbar_colors='{"manager_approved":"blue"}'/>
 
 
@@ -69,15 +68,16 @@
                             <field name="can_manager_approved" invisible="1"/>
                             <field name="can_reject" invisible="1"/>
                             <field name="requested_by" readonly="1"/>
-                            <field name="department_id" />
                             <field name="assigned_to" attrs="{'readonly': [('is_editable','=', False)]}"/>
+                            <field name="project_id"/>
+                            <field name="warehouse_id"/>
                         </group>
-                        <group>
+  <!--                      <group>
                             <field name="date_start"
                                attrs="{'readonly': [('is_editable','=', False)]}"/>
                             <field name="end_start"
                                attrs="{'readonly': [('is_editable','=', False)]}"/>
-                        </group>
+                        </group>-->
                     </group>
                     <notebook>
                         <page string="Products">

@@ -9,8 +9,9 @@ from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
 _STATES = [
     ('draft', 'Draft'),
     ('to_approve', 'To be approved'),
-    ('leader_approved', 'Leader Approved'),
-    ('manager_approved', 'Manager Approved'),
+#    ('leader_approved', 'Leader Approved'),
+#    ('manager_approved', 'Manager Approved'),
+    ('approved', 'Approved'),
     ('rejected', 'Rejected'),
     ('done', 'Done')
 ]
@@ -21,7 +22,6 @@ class SprogroupPurchaseRequest(models.Model):
     _name = 'sprogroup.purchase.request'
     _description = 'Sprogroup Purchase Request'
     _inherit = ['mail.thread']
-
 
     @api.model
     def _get_default_requested_by(self):
@@ -37,12 +37,12 @@ class SprogroupPurchaseRequest(models.Model):
     code = fields.Char('Code', size=32, required=True,
                        default=_get_default_name,
                        track_visibility='onchange')
-    date_start = fields.Date('Start date',
-                             help="Date when the user initiated the request.",
-                             default=fields.Date.context_today,
-                             track_visibility='onchange')
-    end_start = fields.Date('End date',default=fields.Date.context_today,
-                             track_visibility='onchange')
+#    date_start = fields.Date('Start date',
+#                             help="Date when the user initiated the request.",
+#                             default=fields.Date.context_today,
+#                             track_visibility='onchange')
+#    end_start = fields.Date('End date',default=fields.Date.context_today,
+#                             track_visibility='onchange')-->
     requested_by = fields.Many2one('res.users',
                                    'Requested by',
                                    required=True,
@@ -64,8 +64,10 @@ class SprogroupPurchaseRequest(models.Model):
                              required=True,
                              copy=False,
                              default='draft')
-
-
+    warehouse_id = fields.Many2one('warehouse.warehouse',
+                                      'warehouse', required=True)
+    project_id = fields.Many2one('project.project',
+                                      'Project', required=True)
     @api.onchange('state')
     def onchange_state(self):
         assigned_to = None
@@ -85,10 +87,9 @@ class SprogroupPurchaseRequest(models.Model):
     @api.depends('requested_by')
     def _compute_department(self):
         if (self.requested_by.id == False):
-            self.department_id = None
+           self.department_id = None
             return
 
-        employee = self.env['hr.employee'].search([('work_email', '=', self.requested_by.email)])
         if (len(employee) > 0):
             self.department_id = employee[0].department_id.id
         else:
