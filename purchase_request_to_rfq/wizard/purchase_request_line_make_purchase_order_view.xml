@@ -59,7 +59,7 @@
             <field name="target">new</field>
         </record>
 
-        <record model="binding_model_id" id="purchase_request_line_make_purchase_order">
+        <record model="ir.defaults" id="purchase_request_line_make_purchase_order">
             <field name="model_id" ref="model_purchase_request_line" />
             <field name="name">Create RFQ</field>
             <field name="key2">client_action_multi</field>
