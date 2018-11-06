@@ -65,7 +65,7 @@ class SprogroupPurchaseRequest(models.Model):
                              required=True,
                              copy=False,
                              default='draft')
-    warehouse_id = fields.Many2one('stock.warehouse','Warehouse project',required=True)
+    warehouse_id = fields.Many2one('warehouse.warehouse','Warehouse project',required=True)
     commentaire = fields.Text('commentaire')
 
     @api.onchange('state')
