@@ -27,7 +27,6 @@ class SprogroupPurchaseRequest(models.Model):
     def _get_default_requested_by(self):
         return self.env['res.users'].browse(self.env.uid)
 
-
     @api.model
     def _get_default_name(self):
         return self.env['ir.sequence'].next_by_code('sprogroup.purchase.request')
@@ -65,8 +64,7 @@ class SprogroupPurchaseRequest(models.Model):
                              required=True,
                              copy=False,
                              default='draft')
-    warehouse_id = fields.Many2one('warehouse.warehouse','Warehouse project',required=True)
-    commentaire = fields.Text('commentaire')
+
 
     @api.onchange('state')
     def onchange_state(self):
