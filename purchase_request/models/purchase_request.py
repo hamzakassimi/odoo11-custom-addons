@@ -218,7 +218,7 @@ class PurchaseRequestLine(models.Model):
 
     _name = "purchase.request.line"
     _description = "Purchase Request Line"
-    _inherit = ['mail.thread', 'ir.needaction_mixin']
+    _inherit = ['mail.thread']
 
     @api.multi
     @api.depends('product_id', 'name', 'product_uom_id', 'product_qty',
