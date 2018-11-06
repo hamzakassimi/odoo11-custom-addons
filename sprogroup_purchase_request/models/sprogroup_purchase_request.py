@@ -210,13 +210,13 @@ class SprogroupPurchaseRequest(models.Model):
         #     'fiscal_position_id': fpos,
         #     'group_id': group
         # }
-                # type_obj = self.env['stock.picking.type']
-                # warehouse_id = self.project_id.warehouse_id
-                # types = type_obj.search([('code', '=', 'incoming'),
-                #                          ('warehouse_id', '=', warehouse_id)])
-                # if not types:
-                #     types = type_obj.search([('code', '=', 'incoming'),
-                #                              ('warehouse_id', '=', False)])
+                type_obj = self.env['stock.picking.type']
+                warehouse_id = self.project_id.warehouse_id
+                types = type_obj.search([('code', '=', 'incoming'),
+                                         ('warehouse_id', '=', warehouse_id)])
+                if not types:
+                    types = type_obj.search([('code', '=', 'incoming'),
+                                             ('warehouse_id', '=', False)])
         order_line = []
         for line in self.line_ids:
             product = line.product_id
@@ -257,7 +257,7 @@ class SprogroupPurchaseRequest(models.Model):
             'context': {
                 'default_order_line': order_line,
                 'default_state': 'draft',
-#                'default_picking_type_id':types,
+                'default_picking_type_id':types,
 
             }
         }
