@@ -19,7 +19,7 @@ class PurchaseRequest(models.Model):
 
     _name = 'purchase.request'
     _description = 'Purchase Request'
-    _inherit = ['mail.thread', 'ir.needaction_mixin']
+    _inherit = ['mail.thread']
 
     @api.model
     def _company_get(self):
