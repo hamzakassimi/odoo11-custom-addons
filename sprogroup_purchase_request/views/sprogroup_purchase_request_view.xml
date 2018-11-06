@@ -71,13 +71,14 @@
                             <field name="requested_by" readonly="1"/>
                             <field name="department_id" />
                             <field name="assigned_to" attrs="{'readonly': [('is_editable','=', False)]}"/>
+                            <field name="warehouse_id"/>
                         </group>
-                        <group>
+  <!--                      <group>
                             <field name="date_start"
                                attrs="{'readonly': [('is_editable','=', False)]}"/>
                             <field name="end_start"
                                attrs="{'readonly': [('is_editable','=', False)]}"/>
-                        </group>
+                        </group>-->
                     </group>
                     <notebook>
                         <page string="Products">
