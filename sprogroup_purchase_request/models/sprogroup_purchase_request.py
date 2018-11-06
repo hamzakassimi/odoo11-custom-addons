@@ -193,12 +193,6 @@ class SprogroupPurchaseRequest(models.Model):
         for pr in self:
             if not pr.line_ids.filtered(lambda l: l.cancelled is False):
                 pr.write({'state': 'rejected'})
-#    @api.model
-#    def _default_picking_type(self):
-#
-#        types = type_obj.search([('code', '=', 'incoming'),
-#                                     ('warehouse_id', '=', self.project_id.warehouse_id)])
-#        return types[:1]
 
     @api.multi
     def make_purchase_quotation(self):
@@ -217,6 +211,13 @@ class SprogroupPurchaseRequest(models.Model):
         #     'group_id': group
         # }
 
+                type_obj = self.env['stock.picking.type']
+                warehouse_id = self.project_id.warehouse_id
+                types = type_obj.search([('code', '=', 'incoming'),
+                                         ('warehouse_id', '=', warehouse_id)])
+                if not types:
+                    types = type_obj.search([('code', '=', 'incoming'),
+                                             ('warehouse_id', '=', False)])
         order_line = []
         for line in self.line_ids:
             product = line.product_id
@@ -257,7 +258,7 @@ class SprogroupPurchaseRequest(models.Model):
             'context': {
                 'default_order_line': order_line,
                 'default_state': 'draft',
-                'default_picking_type_id':type_obj.search([('code', '=', 'incoming'),('warehouse_id', '=', self.project_id.warehouse_id)]),
+                'default_picking_type_id':types,
 
             }
         }
