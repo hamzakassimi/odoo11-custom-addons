@@ -64,6 +64,9 @@ class SprogroupPurchaseRequest(models.Model):
                              required=True,
                              copy=False,
                              default='draft')
+    project_id = fields.Many2one(string='Project',
+                                required=True,
+                                comodel_name='project.project',)
 
 
     @api.onchange('state')
@@ -190,6 +193,12 @@ class SprogroupPurchaseRequest(models.Model):
         for pr in self:
             if not pr.line_ids.filtered(lambda l: l.cancelled is False):
                 pr.write({'state': 'rejected'})
+    @api.model
+    def _default_picking_type(self):
+
+        types = type_obj.search([('code', '=', 'incoming'),
+                                     ('warehouse_id', '=', self.project_id.warehouse_id)])
+        return types[:1]
 
     @api.multi
     def make_purchase_quotation(self):
@@ -248,6 +257,7 @@ class SprogroupPurchaseRequest(models.Model):
             'context': {
                 'default_order_line': order_line,
                 'default_state': 'draft',
+                'default_picking_type_id':_default_picking_type,
 
             }
         }

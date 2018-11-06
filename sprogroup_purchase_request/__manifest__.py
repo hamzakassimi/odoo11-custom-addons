@@ -18,6 +18,7 @@ Use Purchase Request module for requesting product.
         'security/sprogroup_purchase_request_security.xml',
         'security/ir.model.access.csv',
         'views/sprogroup_purchase_request_view.xml',
+        'views/project_project_views.xml',
     ],
     'depends': ['hr'],
     'installable': True,

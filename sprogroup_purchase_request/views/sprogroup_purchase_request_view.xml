@@ -77,6 +77,7 @@
                                attrs="{'readonly': [('is_editable','=', False)]}"/>
                             <field name="end_start"
                                attrs="{'readonly': [('is_editable','=', False)]}"/>
+                            <field name="project_id"/>
                         </group>
                     </group>
                     <notebook>
