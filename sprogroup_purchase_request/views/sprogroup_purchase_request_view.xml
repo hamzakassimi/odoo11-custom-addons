@@ -73,10 +73,10 @@
                             <field name="assigned_to" attrs="{'readonly': [('is_editable','=', False)]}"/>
                         </group>
                         <group>
-                            <field name="date_start"
+  <!--                          <field name="date_start"
                                attrs="{'readonly': [('is_editable','=', False)]}"/>
                             <field name="end_start"
-                               attrs="{'readonly': [('is_editable','=', False)]}"/>
+                               attrs="{'readonly': [('is_editable','=', False)]}"/>-->
                             <field name="project_id"/>
                         </group>
                     </group>
