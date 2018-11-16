@@ -12,5 +12,6 @@
                     <field name="project_id"/>
                 </field>
             </field>
+          </record>
     </data>
 </odoo>
