@@ -8,7 +8,7 @@
             <field name="inherit_id" ref="purchase.purchase_order_form"/>
             <field name="arch" type="xml">
                 <!-- SO Form View -->
-                <field name="payment_term_id" postion="after">
+                <field name="date_order" postion="after">
                     <field name="project_id"/>
                 </field>
             </field>
