@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- inherit sale form view -->
+        <record id="view_purchase_form_inherit" model="ir.ui.view">
+            <field name="name">purchase.form.inherit</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.view_order_form"/>
+            <field name="arch" type="xml">
+                <!-- SO Form View -->
+                <field name="payment_term_id" postion="after">
+                    <field name="project_id"/>
+                </field>
+    </data>
+</odoo>
