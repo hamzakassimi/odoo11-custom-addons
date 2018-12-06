@@ -53,7 +53,7 @@
             <data>
 	                  <xpath expr="//notebook" position="inside">
 					  <page name="maroc_payroll" string="Donnees Maroc ">
-                    <group >
+                    <group>
                             <field name="plafond_secu"/>
                             <field name="nombre_employes"/>
                             <newline/>
@@ -79,13 +79,21 @@
             <field name="arch" type="xml">
 			<data>
 	                  <xpath expr="//notebook" position="inside">
+              <page name="hr_employee_kids" string="Enfants">
+              <field name="hr_employee_kids_ids" widget="one2many_list">
+                  <tree editable="bottom">
+                      <field name="name"/>
+                      <field name="birthday_kid"/>
+                  </tree>
+              </field>
+          </page>
 					  <page name="maroc_payroll" string="Paramètres Maroc ">
 
-                   <group string="Numéros d'affiliation">
+            <group string="Numéros d affiliation">
                    <field name="cin"/>
-				   <field name="matricule_cnss"/>
-				   <field name="matricule_cimr"/>
-				   <field name="matricule_mut"/>
+				           <field name="matricule_cnss"/>
+				           <field name="matricule_cimr"/>
+				           <field name="matricule_mut"/>
 				    </group>
 					<group string="Absences">
 					<field name="abs"/>

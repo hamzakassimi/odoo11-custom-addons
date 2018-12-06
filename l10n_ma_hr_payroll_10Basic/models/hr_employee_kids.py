@@ -23,7 +23,7 @@ class HrEmployeeKids(models.Model):
         string='Père',
     )
 
-    requested_client_limit = fields.date(
+    birthday_kid = fields.date(
         string='Date de naissance',
     )
 
