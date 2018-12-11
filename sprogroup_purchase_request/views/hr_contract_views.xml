@@ -13,7 +13,6 @@
         <xpath expr="//field[@name='paid']" position="after">
 
       <field name="etat_contrat" widget="selection"/>
-      <page string="Primes et autres Avantages" name="information">
   </xpath>
             </field>
         </record>
