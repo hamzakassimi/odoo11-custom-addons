@@ -58,7 +58,6 @@
                             <field name="nombre_employes"/>
                             <newline/>
                             <field name="org_ss"/>
-                            <field name="state"  widget="statusbar/>
                             <newline/>
 							<field name="conv_coll"/>
 							<newline/>
@@ -87,12 +86,17 @@
 				   <field name="matricule_cimr"/>
 				   <field name="matricule_mut"/>
 				    </group>
+            <group string="Informations banque">
+                <field name="banque"/>
+              <field name="rib"/>
+            </group>
 					<group string="Absences">
 					<field name="abs"/>
 					</group>
-					<group string="Informations banque">
-			      	<field name="banque"/>
-				    <field name="rib"/>
+					<group string=" Heures Sup(Version Pro seulement)">
+			      	<field name="hs25"/>
+				    <field name="hs50"/>
+					<field name="hs100"/>
 					</group>
 					<group string="Remboursements">
 					<field name="av_sal"/>

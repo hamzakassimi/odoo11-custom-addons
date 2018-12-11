@@ -9,12 +9,15 @@ from odoo.exceptions import UserError
 
 class hr_contract(models.Model):
     _inherit = 'hr.contract'
-    buildit_state = [
-        ('legalise', 'Légalise'),
-        ('non_legalise', 'Non légalisé'),
-        ('integration', 'Intégration'),
-        ('inactif', 'Inactif'),
-    ]
+	buildit_state = [
+	        ('legalise', 'Légalise'),
+	        ('non_legalise', 'Non légalisé'),
+	        ('integration', 'Intégration'),
+	        ('inactif', 'Inactif'),
+	    ]
+
+
+
 
 class res_company(models.Model):
     _inherit = 'res.company'
@@ -35,26 +38,18 @@ class hr_payslip(models.Model):
 
 class hr_employee(models.Model):
     _inherit = 'hr.employee'
-
-    employee_kids_ids = fields.One2many(
-        string='Enfants',
-        required=True,
-        comodel_name='hr.employee.kids',
-        inverse_name='employee_id',
-    )
-
-    cin = fields.Char(string="Numéro CIN", required=False)
-    matricule_cnss = fields.Char(string="Numéro CNSS", required=False)
-    matricule_cimr = fields.Char(string="Numéro CIMR", required=False)
-    matricule_mut = fields.Char(string="Numéro MUTUELLE", required=False)
+	cin = fields.Char(string="Numéro CIN", required=False)
+	matricule_cnss = fields.Char(string="Numéro CNSS", required=False)
+	matricule_cimr = fields.Char(string="Numéro CIMR", required=False)
+	matricule_mut = fields.Char(string="Numéro MUTUELLE", required=False)
 	nom_arab = fields.Char(string="Nom erabe", required=False)
 	prenom_arab = fields.Char(string="Prénom arabe", required=False)
 	rib = fields.Char(string="RIB", required=False)
 	banque = fields.Char(string="Nom de la banque", required=False)
-    num_chezemployeur = fields.Integer(string="Matricule")
-    abs = fields.Integer(string="Absence en heures" ,default=0)
-    hs25 = fields.Integer(string="Heures sup à 25" ,default=0)
-    hs50 = fields.Integer(string="Heures sup à 50",default=0)
-    hs100 = fields.Integer(string="Heures sup à 100",default=0)
-    av_sal = fields.Integer(string="Avance sur Salaire",default=0)
-    rem_mut = fields.Integer(string="Remboursement Mutuelle",default=0)
+	num_chezemployeur = fields.Integer(string="Matricule")
+	abs = fields.Integer(string="Absence en heures" ,default=0)
+	hs25 = fields.Integer(string="Heures sup à 25" ,default=0)
+	hs50 = fields.Integer(string="Heures sup à 50",default=0)
+	hs100 = fields.Integer(string="Heures sup à 100",default=0)
+	av_sal = fields.Integer(string="Avance sur Salaire",default=0)
+	rem_mut = fields.Integer(string="Remboursement Mutuelle",default=0)
