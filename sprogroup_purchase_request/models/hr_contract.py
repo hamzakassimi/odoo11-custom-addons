@@ -9,7 +9,7 @@ from odoo.exceptions import UserError
 
 class hr_contract(models.Model):
     _inherit = 'hr.contract'
-    etat_contrat =  fields.Selection([('non_legalise', 'Non légalisée'),
+    etat_contrat =  fields.Selection([('non_legalise', 'Non légalisé'),
 	('legalise', 'Légalisé'),
-	('integration', 'Intégration'),
+	('integration', 'INTEGRATION'),
 	('inactif', 'Inactif')])
