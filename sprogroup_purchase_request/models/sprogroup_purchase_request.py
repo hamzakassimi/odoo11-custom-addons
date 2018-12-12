@@ -257,6 +257,7 @@ class SprogroupPurchaseRequest(models.Model):
                 'default_order_line': order_line,
                 'default_state': 'draft',
                 'default_picking_type_id':types.id,
+                'default_project_id':project_id.id
 
             }
         }
